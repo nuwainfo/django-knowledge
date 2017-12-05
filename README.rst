@@ -33,6 +33,15 @@ Links:
 * Visit our `GitHub repo <https://github.com/zapier/django-knowledge>`_ and join the development!
 
 
+Markup issues:
+------------------
+
+* Original django knowledge came along with django.contrib.markup, which was deprecated in django 1.5 and removed in 1.6 due to due to security issues. 
+
+* We use alternative 3rd party markup library django-markup(https://github.com/bartTC/django-markup).
+
+* We have implemented template filter integration with django-markup. Please remember to add django-markup into installed_app in your project.
+
 Screen Shots:
 -------------
 
