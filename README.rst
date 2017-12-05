@@ -36,7 +36,7 @@ Links:
 Markup issues:
 ------------------
 
-* Original django knowledge came along with django.contrib.markup, which was deprecated in django 1.5 and removed in 1.6 due to due to security issues. 
+* Original django knowledge came along with django.contrib.markup, which was deprecated in django 1.5 and removed in 1.6 due to security issues. 
 
 * We use alternative 3rd party markup library django-markup(https://github.com/bartTC/django-markup).
 
