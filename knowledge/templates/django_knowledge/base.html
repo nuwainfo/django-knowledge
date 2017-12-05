@@ -1,0 +1,21 @@
+{% extends "Base.html" %}
+
+{% load static %}
+
+
+<title>{% block title %}{% endblock title %} | Support Center</title>
+
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static "knowledge/css/reset.css" %}">
+  <link rel="stylesheet" href="{% static "knowledge/css/main.css"  %}">
+{% endblock %}
+
+
+
+{% block layout %}
+  <div class="wrapper">
+    {% block knowledge_inner %}
+    {% endblock knowledge_inner %}
+  </div>
+{% endblock %}
