@@ -170,7 +170,9 @@ pre {
 
 pre, code, tt {
   font: 1em 'andale mono', 'lucida console', monospace;
-  line-height: 1.5; }
+  line-height: 1.5; 
+  white-space: pre;
+}
 
 hr {
   color: #ccc;

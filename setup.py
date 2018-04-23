@@ -19,6 +19,7 @@ setup(
       'static/knowledge/css/*',
       'templates/django_knowledge/*.html',
       'templates/django_knowledge/emails/*.html',
+      'templates/django_knowledge/emails/*.txt',
       'templatetags/*.py']},
     classifiers = ['Development Status :: 3 - Alpha',
                    'Environment :: Web Environment',
