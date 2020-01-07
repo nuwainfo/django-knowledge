@@ -1,1 +1,2 @@
-VERSION = (0, 2, 0)
+# -*- coding: utf-8 -*-
+"""The knowledge package"""
