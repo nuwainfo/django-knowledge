@@ -46,7 +46,7 @@ class KnowledgeBase(models.Model):
     lastchanged = models.DateTimeField(auto_now=True)
 
     user = models.ForeignKey('auth.User' if django.VERSION < (1, 5, 0) else django_settings.AUTH_USER_MODEL, blank=True,
-                             null=True, db_index=True)
+                             null=True, db_index=True, on_delete=models.CASCADE,)
     alert = models.BooleanField(default=settings.ALERTS,
         verbose_name=_('Alert'),
         help_text=_('Check this if you want to be alerted when a new'
@@ -173,7 +173,6 @@ class Question(KnowledgeBase):
     def __unicode__(self):
         return self.title
 
-    @models.permalink
     def get_absolute_url(self):
         from django.template.defaultfilters import slugify
 
@@ -252,7 +251,7 @@ class Response(KnowledgeBase):
     is_response = True
 
     question = models.ForeignKey('knowledge.Question',
-        related_name='responses')
+        related_name='responses', on_delete=models.CASCADE,)
 
     body = models.TextField(blank=True, null=True,
         verbose_name=_('Response'),

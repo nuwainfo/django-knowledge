@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 ('status', models.CharField(default=b'private', max_length=32, verbose_name='Status', db_index=True, choices=[(b'public', 'Public'), (b'private', 'Private'), (b'internal', 'Internal')])),
                 ('locked', models.BooleanField(default=False)),
                 ('categories', models.ManyToManyField(to='knowledge.Category', blank=True)),
-                ('user', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+                ('user', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['-added'],
@@ -61,8 +61,8 @@ class Migration(migrations.Migration):
                 ('body', models.TextField(help_text='Please enter your response. Markdown enabled.', null=True, verbose_name='Response', blank=True)),
                 ('status', models.CharField(default=b'inherit', max_length=32, verbose_name='Status', db_index=True, choices=[(b'public', 'Public'), (b'private', 'Private'), (b'internal', 'Internal'), (b'inherit', 'Inherit')])),
                 ('accepted', models.BooleanField(default=False)),
-                ('question', models.ForeignKey(related_name='responses', to='knowledge.Question')),
-                ('user', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+                ('question', models.ForeignKey(related_name='responses', to='knowledge.Question', on_delete=models.CASCADE)),
+                ('user', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['added'],
