@@ -1,12 +1,24 @@
 from knowledge import settings
 
-import django
+try:
+    import django
+
+    DJANGO_VERSION = (django.VERSION[0] * 10000 + django.VERSION[1] * 100 +
+                      django.VERSION[2])
+except ImportError:
+    warnings.warn("Unable to import django, many Iuno packages require it.")
+    
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings as django_settings
 
 from knowledge.managers import QuestionManager, ResponseManager
 from knowledge.signals import knowledge_post_save
+
+if DJANGO_VERSION < 20000: # 2.0.0:
+    from django.core.urlresolvers import reverse
+else:
+    from django.urls import reverse
 
 STATUSES = (
     ('public', _('Public')),
@@ -177,9 +189,9 @@ class Question(KnowledgeBase):
         from django.template.defaultfilters import slugify
 
         if settings.SLUG_URLS:
-            return ('knowledge_thread', [self.id, slugify(self.title)])
+            return reverse('knowledge_thread', args=[self.id, slugify(self.title)])
         else:
-            return ('knowledge_thread_no_slug', [self.id])
+            return reverse('knowledge_thread_no_slug', args=[self.id])
 
     def inherit(self):
         pass
